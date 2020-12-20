@@ -12,9 +12,9 @@ from collections import OrderedDict
 
 
 
-def generic_menu_builder(title, MENU_DICT):
-	"Reusable code to build menus from a dict"
-	menu = rumps.MenuItem(title)
+def generic_menu_builder(nicetitle, MENU_DICT):
+	"Reusable code to build menus from an Ordered Dict of identifiers fields"
+	menu = rumps.MenuItem(nicetitle)
 	MESSAGE = """Tip: Right-click inside the text area to "Paste" text."""
 	for title, value in MENU_DICT.items():
 		def cb(sender):
@@ -32,6 +32,31 @@ def generic_menu_builder(title, MENU_DICT):
 		menu[title] = mi
 
 	return menu
+
+
+
+def generic_category_menu_builder(nicetitle, CATS_LIST, url_template):
+	"""Build the menu for Dimensions categories. NOTE this this slightly different from
+	the version above cause the url needs to be passed. By doing so we can reuse directly
+	dimcli.CATEGORIES_DICT (in menus.py)"""
+
+	menu = rumps.MenuItem(nicetitle)
+	MESSAGE = """Tip: Right-click inside the text area to "Paste" text."""
+
+	for cat in CATS_LIST:
+		def cb(sender):
+			url = url_template.format(sender.value)
+			webbrowser.open(url)
+		mi = rumps.MenuItem(cat['name'], callback=cb)
+		mi.value = cat['id']
+		menu[cat['name']] = mi
+
+	return menu
+
+
+
+
+
 
 
 class DimensionsApp(rumps.App):
@@ -52,8 +77,16 @@ class DimensionsApp(rumps.App):
 							self._build_orgs_submenu(),
 							]),
 			None,
-			# self._build_categories_submenu(),
-			# None,
+			('Categories', [self._build_cat_for_submenu(), 
+							self._build_cat_sdg_submenu(),
+							self._build_cat_uoa_submenu(),
+							self._build_cat_rcdc_submenu(),
+							self._build_cat_hrcs_rac_submenu(),
+							self._build_cat_hrcs_hc_submenu(),
+							self._build_cat_hra_submenu(),
+							self._build_cat_bra_submenu(),
+							]),
+			None,
 		]
 
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
@@ -78,6 +111,9 @@ class DimensionsApp(rumps.App):
 		else:
 			pass
 
+	#	
+	# sources identifiers 
+	#
 
 	def _build_pubs_submenu(self):
 		return generic_menu_builder("Publication", PUBS_MENU)
@@ -103,16 +139,54 @@ class DimensionsApp(rumps.App):
 	def _build_orgs_submenu(self):
 		return generic_menu_builder("Organization", GRID_MENU)
 
-	def _build_categories_submenu(self):
-		menu = rumps.MenuItem("Categories")
-		for title, value in CATEGORIES_MENU.items():
-			def cb(sender):
-				print(sender)
-			mi = rumps.MenuItem(title, callback=cb)
-			mi.value = value
-			menu[title] = mi
+	#
+	# categories
+	#
 
-		return menu
+	def _build_cat_for_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_for'], key=lambda k: k['name'])
+		return generic_category_menu_builder("FOR", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_for={}""")
+
+	def _build_cat_sdg_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_sdg'], key=lambda k: k['name'])
+		return generic_category_menu_builder("SDG", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_sdg={}""")
+
+	def _build_cat_uoa_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_uoa'], key=lambda k: k['name'])
+		return generic_category_menu_builder("UoA", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_uoa={}""")
+
+	def _build_cat_rcdc_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_rcdc'], key=lambda k: k['name'])
+		return generic_category_menu_builder("RCDC", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_rcdc={}""")
+
+
+	def _build_cat_hrcs_rac_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_hrcs_rac'], key=lambda k: k['name'])
+		return generic_category_menu_builder("HCRC RAC", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_hrcs_rac={}""")
+
+	def _build_cat_hrcs_hc_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_hrcs_hc'], key=lambda k: k['name'])
+		return generic_category_menu_builder("HCRC HC", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_hrcs_hc={}""")
+
+	def _build_cat_hra_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_hra'], key=lambda k: k['name'])
+		return generic_category_menu_builder("HRA", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_health_research_areas={}""")
+
+	def _build_cat_bra_submenu(self):
+		newlist = sorted(CATEGORIES_DICT['category_bra'], key=lambda k: k['name'])
+		return generic_category_menu_builder("BRA", newlist, 
+			"""https://app.dimensions.ai/discover/publication?and_facet_broad_research_areas={}""")
+
+
+
+
 
 if __name__ == "__main__":
 	DimensionsApp().run()
