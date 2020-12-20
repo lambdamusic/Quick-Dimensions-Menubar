@@ -3,7 +3,13 @@
 
 A little [menu bar](https://support.apple.com/en-gb/guide/mac-help/mchlp1446/mac) app for Mac OSx that makes it quicker to access the [Dimensions](https://app.dimensions.ai/discover/publication) database of scientific publications. 
 
+Resolve publications and other objects identifiers:
+
 ![screenshot](https://raw.githubusercontent.com/lambdamusic/quick-dimensions-menubar/master/img/screenshot1.png)
+
+Quick links to research categories:
+
+![screenshot](https://raw.githubusercontent.com/lambdamusic/quick-dimensions-menubar/master/img/screenshot2.png)
 
 
 ## Installation
