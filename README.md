@@ -3,20 +3,20 @@
 
 A little [menu bar](https://support.apple.com/en-gb/guide/mac-help/mchlp1446/mac) app for Mac OSx that makes it quicker to access the [Dimensions](https://app.dimensions.ai/discover/publication) database of scientific publications. 
 
-## Get the app
+## Installation
 
 @TODO 
 
 
-## Run locally with Python 
+## Development 
 
-QuickDimensions is a python app built with [rumps](https://rumps.readthedocs.io/en/latest/). 
+QuickDimensions is a python3 app built with [rumps](https://rumps.readthedocs.io/en/latest/). 
 
 ```
 python quickdimensions
 ```
 
-## Building 
+## Building the app
 
 Requires `py2app`
 
