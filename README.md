@@ -5,11 +5,12 @@ A little [menu bar](https://support.apple.com/en-gb/guide/mac-help/mchlp1446/mac
 
 ![screenshot](https://raw.githubusercontent.com/lambdamusic/quick-dimensions-menubar/master/img/screenshot1.png)
 
-https://github.com/lambdamusic/quick-dimensions-menubar/releases/new
 
 ## Installation
 
-@TODO 
+You can get the latest `quickdimensions.app.zip` release [here](https://github.com/lambdamusic/quick-dimensions-menubar/releases). 
+
+Download, unzip and right-click open to run it. 
 
 
 ## Development 
