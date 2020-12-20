@@ -1,7 +1,7 @@
 from setuptools import setup
 
 APP = ['quickdimensions.py']
-DATA_FILES = ["img/dimensions.icns"]
+DATA_FILES = ["dimensions.icns"]
 OPTIONS = {
     'argv_emulation': True,
     'plist': {

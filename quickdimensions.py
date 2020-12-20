@@ -5,6 +5,7 @@ Dimensions quick launcher menubar for OSx
 from menus import *
 
 import rumps
+rumps.debug_mode(True)
 from rumps import *
 import webbrowser
 from collections import OrderedDict
@@ -19,7 +20,7 @@ def generic_menu_builder(title, MENU_DICT):
 		def cb(sender):
 			# print(sender.value)
 			window = rumps.Window(message=MESSAGE, title=f'Please enter: {sender.title}', default_text='', ok="Go!", cancel=True)
-			window.icon = "img/dimensions.icns"
+			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
 				url = sender.value.format(response.text)
@@ -58,7 +59,7 @@ class DimensionsApp(rumps.App):
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
 
 		# TIP mac icons: copy image, open in Preview, save as .icns
-		self.icon = "img/dimensions.icns"
+		self.icon = "dimensions.icns"
 
 	@rumps.clicked("Open Dimensions")
 	def open_dimensions(self, _):
