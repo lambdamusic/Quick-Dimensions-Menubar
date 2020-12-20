@@ -87,6 +87,9 @@ class DimensionsApp(rumps.App):
 							self._build_cat_bra_submenu(),
 							]),
 			None,
+			self._build_about_dimensions_submenu(),
+			None,
+			"About",
 		]
 
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
@@ -185,7 +188,31 @@ class DimensionsApp(rumps.App):
 			"""https://app.dimensions.ai/discover/publication?and_facet_broad_research_areas={}""")
 
 
+	#
+	# ABOUT menu
+	#
 
+	@rumps.clicked("About")
+	def _about_submenu(self, _):
+		"App about page"
+		url = "https://github.com/lambdamusic/quick-dimensions-menubar"
+		webbrowser.open(url)
+
+
+	def _build_about_dimensions_submenu(self):
+		"Static links menu"
+		menu = rumps.MenuItem("Dimensions..")
+
+		for title, value in ABOUT_MENU.items():
+			def cb(sender):
+				url = sender.value
+				webbrowser.open(url)
+
+			mi = rumps.MenuItem(title, callback=cb)
+			mi.value = value
+			menu[title] = mi
+
+		return menu
 
 
 if __name__ == "__main__":

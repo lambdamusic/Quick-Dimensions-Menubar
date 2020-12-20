@@ -46,6 +46,23 @@ GRID_MENU = OrderedDict([
 
 
 
+#
+# static about pages
+#
+
+ABOUT_MENU = OrderedDict([
+    ('Dimensions homepage' , "https://www.dimensions.ai/") , 
+    ('API docs' , "https://docs.dimensions.ai/dsl/"),
+    ('API LAB' , "https://api-lab.dimensions.ai/"),
+    ('GBQ docs' , "https://docs.dimensions.ai/bigquery/"),
+    ('GBQ COVID19' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/covid-19-dataset-dimensions"),
+    ('GRID.ac' , "https://www.grid.ac/institutes"),
+    ('GRID on GBQ' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
+    ('COVID19 resources' , "https://www.dimensions.ai/covid19/") , 
+])
+
+
+
 
 
 #
