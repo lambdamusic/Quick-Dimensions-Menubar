@@ -19,7 +19,7 @@ def generic_menu_builder(title, MENU_DICT):
 		def cb(sender):
 			# print(sender.value)
 			window = rumps.Window(message=MESSAGE, title=f'Please enter: {sender.title}', default_text='', ok="Go!", cancel=True)
-			window.icon = "dimensions.ico"
+			window.icon = "img/dimensions.icns"
 			response = window.run()
 			if response.clicked:
 				url = sender.value.format(response.text)
@@ -58,7 +58,7 @@ class DimensionsApp(rumps.App):
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
 
 		# TIP mac icons: copy image, open in Preview, save as .icns
-		self.icon = "dimensions.ico"
+		self.icon = "img/dimensions.icns"
 
 	@rumps.clicked("Open Dimensions")
 	def open_dimensions(self, _):

@@ -107,8 +107,6 @@ ENV/
 # IDEs
 .vscode
 
-/tools/apitest*
-/dimcli/tests/apitest*
 
 README_PRIVATE.md
 README_DOCUMENTATION.md
