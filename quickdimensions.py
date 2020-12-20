@@ -15,11 +15,11 @@ from collections import OrderedDict
 def generic_menu_builder(title, MENU_DICT):
 	"Reusable code to build menus from a dict"
 	menu = rumps.MenuItem(title)
-	MESSAGE = """Tip: Right-click inside the text area to "Paste"."""
+	MESSAGE = """Tip: Right-click inside the text area to "Paste" text."""
 	for title, value in MENU_DICT.items():
 		def cb(sender):
 			# print(sender.value)
-			window = rumps.Window(message=MESSAGE, title=f'Please enter: {sender.title}', default_text='', ok="Go!", cancel=True)
+			window = rumps.Window(message=MESSAGE, title=f'{title}: {sender.title}', default_text='', ok="Go!", cancel=True)
 			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
