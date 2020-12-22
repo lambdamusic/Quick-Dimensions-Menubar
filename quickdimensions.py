@@ -3,12 +3,14 @@ Dimensions quick launcher menubar for OSx
 """
 
 from menus import *
+from VERSION import VERSION
 
 import rumps
 rumps.debug_mode(True)
 from rumps import *
 import webbrowser
 from collections import OrderedDict
+
 
 
 
@@ -194,9 +196,9 @@ class DimensionsApp(rumps.App):
 	@rumps.clicked("About")
 	def _about_submenu(self, _):
 		"About popup"
-		window = rumps.Window(message='An unoffical Dimensions launcher', title='About QuickDimensions', ok="View on Github", cancel="Back")
+		window = rumps.Window(message=f"Version: {VERSION}", title='About QuickDimensions', ok="View on Github", cancel="Back")
 		window.icon = self.icon
-		window.default_text = """Quick-Dimensions is an unofficial OSx menu bar app that makes it easier to access the Dimensions database of scientific research objects: https://www.dimensions.ai/ \n\nFor more information see the Github repository and add a star too, if you feel like it!"""
+		window.default_text = """Quick-Dimensions is an unofficial OSx menu bar app that makes it easier to access the Dimensions.ai, a large database of scientific research objects including publications, patents, datasets etc..\n\nFor more information see the Github repository and add a star too, if you feel like it!"""
 
 		response = window.run()
 		if response.clicked:

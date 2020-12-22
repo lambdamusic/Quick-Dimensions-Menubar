@@ -37,6 +37,23 @@ Requires `py2app`
 python setup.py py2app
 ```
 
+# FAQs
+
+* Do I need a subscription to use Dimensions? 
+
+No, although Dimensions has paid-for plans for professional use, you will be able to search it and access individual record pages (eg publications metadata) free-of-charge. 
+
+* Is this app free? 
+
+Yes this app is free as in beer. I build it half for fun, half because I needed something to speed up my Dimensions searches.
+If others can make use of it, that definitely makes me happier. And if you like it please give it a star!
+
+* Why doesn't it work on OSx version X/Y/Z ? 
+
+I tested and built the app on a mac running macOS Big Sur, version 11.1. The app should work on recent OS versions but I can't guarantee that, nor test it. 
+
+If you know your way around Python it's pretty easy to download the source code and build the app executable on your mac (see the section above).
+
 
 # Comments, bug reports
 
@@ -45,9 +62,8 @@ The Quick-Dimensions app lives on [Github](https://github.com/lambdamusic/quick-
 
 ## Disclaimer
 
-Please note that this is an **unofficial** Dimensions application. I build it half for fun, half because I needed something to speed up my Dimensions searches. 
+Please note that this is an **unofficial** Dimensions application. 
 
-If others can make use of it, that definitely makes me happier. However I can't guarantee it will work on all OSx versions (especially older ones) nor I can provide support to all issues reported. 
 
 
 
