@@ -20,6 +20,10 @@ Download the file `quickdimensions.app.zip` , unzip and right-click open to run 
 
 It was built with OSx 11.1, but it *should* work on not-too-older versions too.  
 
+## Opening the app
+
+The first time you'll probably have to **right-click** on it and select 'Open', instead of just double-clicking on it. This is because the app doesn't come from the App Store and hence the OS flags it as [potentially malicious](https://www.cultofmac.com/672576/cant-launch-your-apps-on-macos-catalina-heres-the-fix/). 
+
 
 # Development 
 
