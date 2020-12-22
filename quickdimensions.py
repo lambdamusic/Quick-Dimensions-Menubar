@@ -6,7 +6,7 @@ from menus import *
 from VERSION import VERSION
 
 import rumps
-rumps.debug_mode(True)
+# rumps.debug_mode(True)
 from rumps import *
 import webbrowser
 from collections import OrderedDict
