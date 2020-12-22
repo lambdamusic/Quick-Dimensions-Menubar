@@ -7,6 +7,26 @@ Menus definitions
 from collections import OrderedDict
 
 
+
+
+#
+# static about pages
+#
+
+ABOUT_MENU = OrderedDict([
+    ('API docs' , "https://docs.dimensions.ai/dsl/"),
+    ('API LAB' , "https://api-lab.dimensions.ai/"),
+    ('BigQuery docs' , "https://docs.dimensions.ai/bigquery/"),
+    ('BigQuery COVID19 dataset' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/covid-19-dataset-dimensions"),
+    ('BigQuery GRID dataset' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
+    ('GRID homepage' , "https://www.grid.ac/institutes"),
+    ('COVID19 resources' , "https://www.dimensions.ai/covid19/") , 
+    ('Dimensions homepage' , "https://www.dimensions.ai/") , 
+])
+
+
+
+
 PUBS_MENU = OrderedDict([
     ('Dimensions ID' , "https://app.dimensions.ai/details/publication/{}") , 
     ('DOI' , "https://app.dimensions.ai/discover/publication?search_mode=content&search_text={}&search_type=kws&search_field=doi"),
@@ -42,24 +62,6 @@ GRID_MENU = OrderedDict([
     ('GRID ID' , "https://app.dimensions.ai/discover/publication?and_facet_research_org={}") , 
 ])
 
-
-
-
-
-#
-# static about pages
-#
-
-ABOUT_MENU = OrderedDict([
-    ('Dimensions homepage' , "https://www.dimensions.ai/") , 
-    ('API docs' , "https://docs.dimensions.ai/dsl/"),
-    ('API LAB' , "https://api-lab.dimensions.ai/"),
-    ('GBQ docs' , "https://docs.dimensions.ai/bigquery/"),
-    ('GBQ COVID19' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/covid-19-dataset-dimensions"),
-    ('GRID.ac' , "https://www.grid.ac/institutes"),
-    ('GRID on GBQ' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
-    ('COVID19 resources' , "https://www.dimensions.ai/covid19/") , 
-])
 
 
 

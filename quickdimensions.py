@@ -65,9 +65,9 @@ class DimensionsApp(rumps.App):
 
 		menu_spec = [
 			"Open Dimensions",
-			"Full text search",
 			None,
-			('Identifiers', [self._build_pubs_submenu(), 
+			"Search text",
+			('Search identifiers', [self._build_pubs_submenu(), 
 							self._build_grants_submenu(),
 							self._build_patent_submenu(),
 							self._build_poldoc_submenu(),
@@ -76,8 +76,7 @@ class DimensionsApp(rumps.App):
 							self._build_res_submenu(),
 							self._build_orgs_submenu(),
 							]),
-			None,
-			('Categories', [self._build_cat_for_submenu(), 
+			('Search categories', [self._build_cat_for_submenu(), 
 							self._build_cat_sdg_submenu(),
 							self._build_cat_uoa_submenu(),
 							self._build_cat_rcdc_submenu(),
@@ -101,7 +100,7 @@ class DimensionsApp(rumps.App):
 	def open_dimensions(self, _):
 		webbrowser.open("https://app.dimensions.ai/")
 
-	@rumps.clicked("Full text search")
+	@rumps.clicked("Search text")
 	def search(self, _):
 
 		window = rumps.Window(message='Enter some text', title='Full text search - Dimensions', default_text='', ok="Go!", cancel=True)
@@ -194,14 +193,23 @@ class DimensionsApp(rumps.App):
 
 	@rumps.clicked("About")
 	def _about_submenu(self, _):
-		"App about page"
-		url = "https://github.com/lambdamusic/quick-dimensions-menubar"
-		webbrowser.open(url)
+		"About popup"
+		window = rumps.Window(message='An unoffical Dimensions launcher', title='About QuickDimensions', ok="View on Github", cancel="Back")
+		window.icon = self.icon
+		window.default_text = """Quick-Dimensions is an unofficial OSx menu bar app that makes it easier to access the Dimensions database of scientific research objects: https://www.dimensions.ai/ \n\nFor more information see the Github repository and add a star too, if you feel like it!"""
+
+		response = window.run()
+		if response.clicked:
+			url = "https://github.com/lambdamusic/quick-dimensions-menubar"
+			webbrowser.open(url)
+		else:
+			pass
+
 
 
 	def _build_about_dimensions_submenu(self):
 		"Static links menu"
-		menu = rumps.MenuItem("Dimensions..")
+		menu = rumps.MenuItem("Other sites..")
 
 		for title, value in ABOUT_MENU.items():
 			def cb(sender):
