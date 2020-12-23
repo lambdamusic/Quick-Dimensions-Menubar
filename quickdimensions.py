@@ -12,6 +12,16 @@ import webbrowser
 from collections import OrderedDict
 
 
+def get_clipboard():
+	"""Paste the clipboard
+	https://stackoverflow.com/questions/7083313/python-get-mac-clipboard-contents/59456366
+	"""
+	from AppKit import NSPasteboard, NSStringPboardType
+	pb = NSPasteboard.generalPasteboard()
+	pbstring = pb.stringForType_(NSStringPboardType)
+	# print("Pastboard string: %s" % pbstring)
+	return pbstring
+
 
 
 def generic_menu_builder(nicetitle, MENU_DICT):
@@ -21,7 +31,8 @@ def generic_menu_builder(nicetitle, MENU_DICT):
 	for title, value in MENU_DICT.items():
 		def cb(sender):
 			# print(sender.value)
-			window = rumps.Window(message=MESSAGE, title=f'{title}: {sender.title}', default_text='', ok="Go!", cancel=True)
+			clp = get_clipboard()
+			window = rumps.Window(message=MESSAGE, title=f'{title}: {sender.title}', default_text=clp, ok="Go!", cancel=True)
 			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
@@ -104,8 +115,9 @@ class DimensionsApp(rumps.App):
 
 	@rumps.clicked("Search text")
 	def search(self, _):
-
-		window = rumps.Window(message='Enter some text', title='Full text search - Dimensions', default_text='', ok="Go!", cancel=True)
+		"""Full text search submenu"""
+		clp = get_clipboard()
+		window = rumps.Window(message='Enter some text', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
 		window.icon = self.icon
 		response = window.run()
 		# print(response)
