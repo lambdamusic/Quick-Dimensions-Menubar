@@ -10,7 +10,7 @@ import rumps
 from rumps import *
 import webbrowser
 from collections import OrderedDict
-
+import urllib
 
 def get_clipboard():
 	"""Paste the clipboard
@@ -22,12 +22,14 @@ def get_clipboard():
 	# print("Pastboard string: %s" % pbstring)
 	return pbstring
 
-
+def url_safe(s):
+	return urllib.parse.quote_plus(s.strip())
+	
 
 def generic_menu_builder(nicetitle, MENU_DICT):
 	"Reusable code to build menus from an Ordered Dict of identifiers fields"
 	menu = rumps.MenuItem(nicetitle)
-	MESSAGE = """Tip: Right-click inside the text area to "Paste" text."""
+	MESSAGE = """Enter an identifier (clipboard pasted automatically)"""
 	for title, value in MENU_DICT.items():
 		def cb(sender):
 			# print(sender.value)
@@ -36,7 +38,7 @@ def generic_menu_builder(nicetitle, MENU_DICT):
 			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
-				url = sender.value.format(response.text)
+				url = sender.value.format(url_safe(response.text))
 				webbrowser.open(url)
 			else:
 				pass
@@ -54,8 +56,6 @@ def generic_category_menu_builder(nicetitle, CATS_LIST, url_template):
 	dimcli.CATEGORIES_DICT (in menus.py)"""
 
 	menu = rumps.MenuItem(nicetitle)
-	MESSAGE = """Tip: Right-click inside the text area to "Paste" text."""
-
 	for cat in CATS_LIST:
 		def cb(sender):
 			url = url_template.format(sender.value)
@@ -117,13 +117,15 @@ class DimensionsApp(rumps.App):
 	def search(self, _):
 		"""Full text search submenu"""
 		clp = get_clipboard()
-		window = rumps.Window(message='Enter some text', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
+		window = rumps.Window(message='Enter some text (clipboard pasted automatically)', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
 		window.icon = self.icon
 		response = window.run()
 		# print(response)
 		if response.clicked:
-			url = f"https://app.dimensions.ai/discover/publication?search_mode=content&search_text={response.text}&search_type=kws&search_field=full_search"
+			stringa = url_safe(response.text)
+			url = f"https://app.dimensions.ai/discover/publication?search_mode=content&search_text={stringa}&search_type=kws&search_field=full_search"
 			webbrowser.open(url)
+			# print(url)
 		else:
 			pass
 

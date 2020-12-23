@@ -1,6 +1,9 @@
 
 # Quick Dimensions Menubar - Changelog
 
+**v0.5**
+
+* Improve handling of search strings with quotes etc.. 
 
 **v0.4**
 
