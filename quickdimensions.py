@@ -6,7 +6,7 @@ from menus import *
 from VERSION import VERSION
 
 import rumps
-rumps.debug_mode(True)
+# rumps.debug_mode(True)
 from rumps import *
 import webbrowser
 from collections import OrderedDict
@@ -70,12 +70,13 @@ def generic_category_menu_builder(nicetitle, CATS_LIST, url_template):
 
 def do_full_text_search(sender):
 	clp = get_clipboard()
-	window = rumps.Window(message='Enter some text', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
+	window = rumps.Window(message='Enter an identifier (clipboard pasted automatically)', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
 	window.icon = sender.icon
 	response = window.run()
 	# print(response)
 	if response.clicked:
-		url = f"https://app.dimensions.ai/discover/publication?search_mode=content&search_text={response.text}&search_type=kws&search_field=full_search"
+		stringa = url_safe(response.text)
+		url = f"https://app.dimensions.ai/discover/publication?search_mode=content&search_text={stringa}&search_type=kws&search_field=full_search"
 		webbrowser.open(url)
 	else:
 		pass
