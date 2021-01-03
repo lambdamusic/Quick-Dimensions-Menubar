@@ -16,7 +16,7 @@ Quick links to research categories:
 
 Best is to get the [latest prebuilt binary](https://github.com/lambdamusic/quick-dimensions-menubar/releases). 
 
-Download the file `quickdimensions.app.zip` , unzip and right-click open to run it. 
+Download the file `QuickDimensions.app.zip` , unzip and right-click open to run it. 
 
 It was built with OSx 11.1, but it *should* work on not-too-older versions too.  
 
@@ -30,7 +30,7 @@ The first time you'll probably have to **right-click** on it and select 'Open', 
 QuickDimensions is a python3 app built with [rumps](https://rumps.readthedocs.io/en/latest/). After installing the dependencies, you can run it with: 
 
 ```
-python quickdimensions
+python QuickDimensions
 ```
 
 ## Building the app

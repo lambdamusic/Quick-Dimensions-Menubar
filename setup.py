@@ -1,6 +1,6 @@
 from setuptools import setup
 
-APP = ['quickdimensions.py']
+APP = ['QuickDimensions.py']
 DATA_FILES = ["dimensions.icns"]
 OPTIONS = {
     'argv_emulation': True,

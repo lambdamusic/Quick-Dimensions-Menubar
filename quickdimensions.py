@@ -26,7 +26,7 @@ def url_safe(s):
 	return urllib.parse.quote_plus(s.strip())
 	
 
-def generic_menu_builder(nicetitle, MENU_DICT):
+def identifier_menu_builder(nicetitle, MENU_DICT):
 	"Reusable code to build menus from an Ordered Dict of identifiers fields"
 	menu = rumps.MenuItem(nicetitle)
 	MESSAGE = """Enter an identifier (clipboard pasted automatically)"""
@@ -139,28 +139,28 @@ class DimensionsApp(rumps.App):
 	#
 
 	def _build_pubs_submenu(self):
-		return generic_menu_builder("Publication", PUBS_MENU)
+		return identifier_menu_builder("Publication", PUBS_MENU)
 
 	def _build_grants_submenu(self):
-		return generic_menu_builder("Grant", GRANTS_MENU)
+		return identifier_menu_builder("Grant", GRANTS_MENU)
 
 	def _build_patent_submenu(self):
-		return generic_menu_builder("Patent", PATENTS_MENU)
+		return identifier_menu_builder("Patent", PATENTS_MENU)
 
 	def _build_poldoc_submenu(self):
-		return generic_menu_builder("Policy Document", POLICY_DOCUMENTS_MENU)
+		return identifier_menu_builder("Policy Document", POLICY_DOCUMENTS_MENU)
 
 	def _build_cltrial_submenu(self):
-		return generic_menu_builder("Clinical Trial", CLINICAL_TRIALS_MENU)
+		return identifier_menu_builder("Clinical Trial", CLINICAL_TRIALS_MENU)
 
 	def _build_dataset_submenu(self):
-		return generic_menu_builder("Dataset", DATASETS_MENU)
+		return identifier_menu_builder("Dataset", DATASETS_MENU)
 
 	def _build_res_submenu(self):
-		return generic_menu_builder("Researcher", RESEARCHERS_MENU)
+		return identifier_menu_builder("Researcher", RESEARCHERS_MENU)
 
 	def _build_orgs_submenu(self):
-		return generic_menu_builder("Organization", GRID_MENU)
+		return identifier_menu_builder("Organization", GRID_MENU)
 
 	#
 	# categories
