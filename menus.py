@@ -27,39 +27,56 @@ ABOUT_MENU = OrderedDict([
 
 
 
+## IDENTIFIERS MENUS 
+#
+# format: 
+# ('Title' , ["url-template", "helper message"])
+#
+##
+
 PUBS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/publication/{}") , 
-    ('DOI' , "https://app.dimensions.ai/discover/publication?search_mode=content&search_text={}&search_type=kws&search_field=doi"),
-    ('Pubmed ID' , "https://app.dimensions.ai/discover/publication?search_mode=content&search_text=pmid%3A{}&search_type=kws&search_field=full_search"),
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/publication/{}", 
+                        "For example: 'pub.1134028720'"]) , 
+    ('DOI' , ["https://app.dimensions.ai/discover/publication?search_mode=content&search_text={}&search_type=kws&search_field=doi",
+            "For example: '10.2339/politeknik.682649'"]) , 
+    ('Pubmed ID' , ["https://app.dimensions.ai/discover/publication?search_mode=content&search_text=pmid%3A{}&search_type=kws&search_field=full_search", 
+            "For example: '33315750'"]) , 
     # ('ISBN' , "https://app.dimensions.ai/details/publication/{}"),
 ])
 
 GRANTS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/grant/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/grant/{}", 
+                        "For example: 'grant.8964187'"]) ,  
 ])
 
 PATENTS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/patent/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/patent/{}", 
+                        "For example: 'DE-1935222-A1'"]) , 
 ])
 
 POLICY_DOCUMENTS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/policy_documents/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/policy_documents/{}", 
+                        "For example: 'policy.643714'"]) , 
 ])
 
 CLINICAL_TRIALS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/clinical_trial/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/clinical_trial/{}", 
+                        "For example: 'KCT0002494'"]) ,  
 ])
 
 DATASETS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/data_set/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/data_set/{}", 
+                        "For example: 'dataset.8690964'"]) ,  
 ])
 
 RESEARCHERS_MENU = OrderedDict([
-    ('Dimensions ID' , "https://app.dimensions.ai/details/entities/publication/author/{}") , 
+    ('Dimensions ID' , ["https://app.dimensions.ai/details/entities/publication/author/{}", 
+                        "For example: 'ur.010377042322.36'"]) , 
 ])
 
 GRID_MENU = OrderedDict([
-    ('GRID ID' , "https://app.dimensions.ai/discover/publication?and_facet_research_org={}") , 
+    ('GRID ID' , ["https://app.dimensions.ai/discover/publication?and_facet_research_org={}", 
+                        "For example: 'grid.19006.3e'"]) , 
 ])
 
 
@@ -67,7 +84,7 @@ GRID_MENU = OrderedDict([
 
 
 
-#
+##
 # CATEGORIES_DICT is a dictionary rendering of the DSL research categories JSON
 #
 # last updated: 2019-09-23
@@ -79,7 +96,7 @@ GRID_MENU = OrderedDict([
 #
 # Then remove '_stats' section, and combine them all into a py file
 #
-#
+##
 
 CATEGORIES_DICT = {
     "category_sdg": [

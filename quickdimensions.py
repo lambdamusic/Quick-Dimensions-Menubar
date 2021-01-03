@@ -30,21 +30,28 @@ def identifier_menu_builder(nicetitle, MENU_DICT):
 	"Reusable code to build menus from an Ordered Dict of identifiers fields"
 	menu = rumps.MenuItem(nicetitle)
 	SUBTITLE = """Note: clipboard contents are pasted automatically below."""
-	for title, value in MENU_DICT.items():
+	for opt_title, opt_tuple in MENU_DICT.items():
+
 		def cb(sender):
 			# print(sender.value)
+			opt_url, opt_help_msg = sender.value
 			clp = get_clipboard()
-			window = rumps.Window(message=SUBTITLE, title=f'Enter a {nicetitle} {sender.title}', default_text=clp, ok="Go!", cancel=True)
+			window = rumps.Window(message=opt_help_msg + "\n" + SUBTITLE, 
+						title=f'Enter a {nicetitle} {sender.title}', 
+						default_text=clp, 
+						ok="Go!", 
+						cancel=True)
 			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
-				url = sender.value.format(url_safe(response.text))
+				url = opt_url.format(url_safe(response.text))
 				webbrowser.open(url)
 			else:
 				pass
-		mi = rumps.MenuItem(title, callback=cb)
-		mi.value = value
-		menu[title] = mi
+
+		mi = rumps.MenuItem(opt_title, callback=cb)
+		mi.value = opt_tuple
+		menu[opt_title] = mi
 
 	return menu
 
