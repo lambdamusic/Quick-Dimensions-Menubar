@@ -29,12 +29,12 @@ def url_safe(s):
 def identifier_menu_builder(nicetitle, MENU_DICT):
 	"Reusable code to build menus from an Ordered Dict of identifiers fields"
 	menu = rumps.MenuItem(nicetitle)
-	MESSAGE = """Enter an identifier (clipboard pasted automatically)"""
+	SUBTITLE = """Note: clipboard contents are pasted automatically below."""
 	for title, value in MENU_DICT.items():
 		def cb(sender):
 			# print(sender.value)
 			clp = get_clipboard()
-			window = rumps.Window(message=MESSAGE, title=f'{title}: {sender.title}', default_text=clp, ok="Go!", cancel=True)
+			window = rumps.Window(message=SUBTITLE, title=f'Enter a {nicetitle} {sender.title}', default_text=clp, ok="Go!", cancel=True)
 			window.icon = "dimensions.icns"
 			response = window.run()
 			if response.clicked:
@@ -217,7 +217,7 @@ class DimensionsApp(rumps.App):
 		"About popup"
 		window = rumps.Window(message=f"Version: {VERSION}", title='About QuickDimensions', ok="View on Github", cancel="Back")
 		window.icon = self.icon
-		window.default_text = """Quick-Dimensions is an unofficial OSx menu bar app that makes it easier to access the Dimensions.ai, a large database of scientific research objects including publications, patents, datasets etc..\n\nFor more information see the Github repository and add a star too, if you feel like it!"""
+		window.default_text = """QuickDimensions is an unofficial Mac OS menu bar launcher for the Dimensions research database.\n\nFor more information see the Github repository."""
 
 		response = window.run()
 		if response.clicked:
