@@ -77,7 +77,7 @@ def generic_category_menu_builder(nicetitle, CATS_LIST, url_template):
 
 def do_full_text_search(sender):
 	clp = get_clipboard()
-	window = rumps.Window(message='Enter an identifier (clipboard pasted automatically)', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
+	window = rumps.Window(message='Use quotes for exact searches (clipboard pasted automatically)', title='Full text search - Dimensions', default_text=clp, ok="Go!", cancel=True)
 	window.icon = sender.icon
 	response = window.run()
 	# print(response)
@@ -123,6 +123,7 @@ class DimensionsApp(rumps.App):
 			None,
 			self._build_about_dimensions_submenu(),
 			None,
+			"Releases..",
 			"About",
 		]
 
@@ -221,8 +222,8 @@ class DimensionsApp(rumps.App):
 
 	@rumps.clicked("About")
 	def _about_submenu(self, _):
-		"About popup"
-		window = rumps.Window(message=f"Version: {VERSION}", title='About QuickDimensions', ok="View on Github", cancel="Back")
+		"""About popup"""
+		window = rumps.Window(message=f"Version: {VERSION}", title='QuickDimensions', ok="View on Github", cancel="Back")
 		window.icon = self.icon
 		window.default_text = """QuickDimensions is an unofficial Mac OS menu bar launcher for the Dimensions research database.\n\nFor more information see the Github repository."""
 
@@ -233,7 +234,9 @@ class DimensionsApp(rumps.App):
 		else:
 			pass
 
-
+	@rumps.clicked("Releases..")
+	def open_releases(self, _):
+		webbrowser.open("https://github.com/lambdamusic/Quick-Dimensions-Menubar/releases")
 
 	def _build_about_dimensions_submenu(self):
 		"Static links menu"

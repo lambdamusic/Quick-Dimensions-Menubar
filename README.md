@@ -30,7 +30,7 @@ The first time you'll probably have to **right-click** on it and select 'Open', 
 QuickDimensions is a python3 app built with [rumps](https://rumps.readthedocs.io/en/latest/). After installing the dependencies, you can run it with: 
 
 ```
-python QuickDimensions
+python QuickDimensions.py
 ```
 
 ## Building the app
