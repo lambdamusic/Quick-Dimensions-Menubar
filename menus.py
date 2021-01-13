@@ -14,14 +14,11 @@ from collections import OrderedDict
 #
 
 ABOUT_MENU = OrderedDict([
-    ('API docs' , "https://docs.dimensions.ai/dsl/"),
     ('API LAB' , "https://api-lab.dimensions.ai/"),
-    ('BigQuery docs' , "https://docs.dimensions.ai/bigquery/"),
-    ('BigQuery COVID19 dataset' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/covid-19-dataset-dimensions"),
-    ('BigQuery GRID dataset' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
     ('GRID homepage' , "https://www.grid.ac/institutes"),
+    ('GRID dataset on BigQuery' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
     ('COVID19 resources' , "https://www.dimensions.ai/covid19/") , 
-    ('Dimensions homepage' , "https://www.dimensions.ai/") , 
+    ('COVID19 dataset on BigQuery' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/covid-19-dataset-dimensions") ,
 ])
 
 

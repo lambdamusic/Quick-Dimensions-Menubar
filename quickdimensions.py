@@ -121,10 +121,12 @@ class DimensionsApp(rumps.App):
 							self._build_cat_bra_submenu(),
 							]),
 			None,
-			self._build_about_dimensions_submenu(),
+			"Docs: API",
+			"Docs: BigQuery",
+			self._build_othersites_submenu(),
 			None,
-			"Releases..",
 			"About",
+			"Releases..",
 		]
 
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
@@ -140,6 +142,35 @@ class DimensionsApp(rumps.App):
 	def search(self, _):
 		"""Full text search submenu"""
 		do_full_text_search(self)
+	#
+	# ABOUT menu
+	#
+
+	@rumps.clicked("About")
+	def _about_submenu(self, _):
+		"""About popup"""
+		window = rumps.Window(message=f"Version: {VERSION}", title='QuickDimensions', ok="More info", cancel="Back")
+		window.icon = self.icon
+		window.default_text = """QuickDimensions is an unofficial Mac OS menu bar launcher for the Dimensions research database.\n\nFor more information see the Github repository."""
+
+		response = window.run()
+		if response.clicked:
+			url = "https://github.com/lambdamusic/Quick-Dimensions-Menubar/blob/main/README.md"
+			webbrowser.open(url)
+		else:
+			pass
+
+	@rumps.clicked("Docs: API")
+	def open_docs_api(self, _):
+		webbrowser.open("https://docs.dimensions.ai/dsl/")
+
+	@rumps.clicked("Docs: BigQuery")
+	def open_doc_gbq(self, _):
+		webbrowser.open("https://docs.dimensions.ai/bigquery/")
+
+	@rumps.clicked("Releases..")
+	def open_releases(self, _):
+		webbrowser.open("https://github.com/lambdamusic/Quick-Dimensions-Menubar/releases")
 
 
 	#	
@@ -216,29 +247,8 @@ class DimensionsApp(rumps.App):
 			"""https://app.dimensions.ai/discover/publication?and_facet_broad_research_areas={}""")
 
 
-	#
-	# ABOUT menu
-	#
 
-	@rumps.clicked("About")
-	def _about_submenu(self, _):
-		"""About popup"""
-		window = rumps.Window(message=f"Version: {VERSION}", title='QuickDimensions', ok="View on Github", cancel="Back")
-		window.icon = self.icon
-		window.default_text = """QuickDimensions is an unofficial Mac OS menu bar launcher for the Dimensions research database.\n\nFor more information see the Github repository."""
-
-		response = window.run()
-		if response.clicked:
-			url = "https://github.com/lambdamusic/quick-dimensions-menubar"
-			webbrowser.open(url)
-		else:
-			pass
-
-	@rumps.clicked("Releases..")
-	def open_releases(self, _):
-		webbrowser.open("https://github.com/lambdamusic/Quick-Dimensions-Menubar/releases")
-
-	def _build_about_dimensions_submenu(self):
+	def _build_othersites_submenu(self):
 		"Static links menu"
 		menu = rumps.MenuItem("Other sites..")
 
