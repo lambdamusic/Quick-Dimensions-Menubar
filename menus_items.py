@@ -7,14 +7,15 @@ Menus definitions
 from collections import OrderedDict
 
 
-
-
 #
 # static about pages
 #
 
 ABOUT_MENU = OrderedDict([
+    ('Docs: API' , "https://docs.dimensions.ai/dsl/"),
+    ('Docs: BigQuery' , "https://docs.dimensions.ai/bigquery/"),
     ('API LAB' , "https://api-lab.dimensions.ai/"),
+    ('BigQuery LAB' , "https://bigquery-lab.dimensions.ai/"),
     ('GRID homepage' , "https://www.grid.ac/institutes"),
     ('GRID dataset on BigQuery' , "https://console.cloud.google.com/marketplace/product/digitalscience-public/grid-ac-database"),
     ('COVID19 resources' , "https://www.dimensions.ai/covid19/") , 

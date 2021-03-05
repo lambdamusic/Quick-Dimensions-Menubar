@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 #  -*- coding: UTF-8 -*-
 
-__version__ = "0.5.5" 
+__version__ = "0.5.6" 
 __copyright__ = "CopyRight (C) 2020 by Michele Pasin"
 __license__ = "MIT"
 __author__ = "Michele Pasin"

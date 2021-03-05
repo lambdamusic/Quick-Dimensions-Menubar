@@ -2,7 +2,7 @@
 Dimensions quick launcher menubar for OSx
 """
 
-from menus import *
+from menus_items import *
 from VERSION import VERSION
 
 import rumps
@@ -60,7 +60,7 @@ def identifier_menu_builder(nicetitle, MENU_DICT):
 def generic_category_menu_builder(nicetitle, CATS_LIST, url_template):
 	"""Build the menu for Dimensions categories. NOTE this this slightly different from
 	the version above cause the url needs to be passed. By doing so we can reuse directly
-	dimcli.CATEGORIES_DICT (in menus.py)"""
+	dimcli.CATEGORIES_DICT (in menus_items.py)"""
 
 	menu = rumps.MenuItem(nicetitle)
 	for cat in CATS_LIST:
@@ -99,34 +99,29 @@ class DimensionsApp(rumps.App):
 	def __init__(self):
 
 		menu_spec = [
-			"Open Dimensions",
+			"Search Dimensions",
 			None,
-			"Search text",
-			('Search identifiers', [self._build_pubs_submenu(), 
-							self._build_grants_submenu(),
-							self._build_patent_submenu(),
-							self._build_poldoc_submenu(),
-							self._build_cltrial_submenu(),
-							self._build_dataset_submenu(),
-							self._build_res_submenu(),
-							self._build_orgs_submenu(),
-							]),
-			('Search categories', [self._build_cat_for_submenu(), 
-							self._build_cat_sdg_submenu(),
-							self._build_cat_uoa_submenu(),
-							self._build_cat_rcdc_submenu(),
-							self._build_cat_hrcs_rac_submenu(),
-							self._build_cat_hrcs_hc_submenu(),
-							self._build_cat_hra_submenu(),
-							self._build_cat_bra_submenu(),
-							]),
+			self._build_pubs_submenu(),
+			self._build_grants_submenu(),
+			self._build_patent_submenu(),
+			self._build_poldoc_submenu(),
+			self._build_cltrial_submenu(),
+			self._build_dataset_submenu(),
+			self._build_res_submenu(),
+			self._build_orgs_submenu(),
 			None,
-			"Docs: API",
-			"Docs: BigQuery",
+			self._build_cat_for_submenu(), 
+			self._build_cat_sdg_submenu(),
+			self._build_cat_uoa_submenu(),
+			self._build_cat_rcdc_submenu(),
+			self._build_cat_hrcs_rac_submenu(),
+			self._build_cat_hrcs_hc_submenu(),
+			self._build_cat_hra_submenu(),
+			self._build_cat_bra_submenu(),		
+			None,
 			self._build_othersites_submenu(),
-			None,
 			"About",
-			"Releases..",
+			None,
 		]
 
 		super(DimensionsApp, self).__init__("Dimensions", menu=menu_spec)
@@ -134,11 +129,11 @@ class DimensionsApp(rumps.App):
 		# TIP mac icons: copy image, open in Preview, save as .icns
 		self.icon = "dimensions.icns"
 
-	@rumps.clicked("Open Dimensions")
-	def open_dimensions(self, _):
-		webbrowser.open("https://app.dimensions.ai/")
+	# @rumps.clicked("Open Dimensions")
+	# def open_dimensions(self, _):
+	# 	webbrowser.open("https://app.dimensions.ai/")
 
-	@rumps.clicked("Search text")
+	@rumps.clicked("Search Dimensions")
 	def search(self, _):
 		"""Full text search submenu"""
 		do_full_text_search(self)
@@ -160,17 +155,17 @@ class DimensionsApp(rumps.App):
 		else:
 			pass
 
-	@rumps.clicked("Docs: API")
-	def open_docs_api(self, _):
-		webbrowser.open("https://docs.dimensions.ai/dsl/")
+	# @rumps.clicked("Docs: API")
+	# def open_docs_api(self, _):
+	# 	webbrowser.open("https://docs.dimensions.ai/dsl/")
 
-	@rumps.clicked("Docs: BigQuery")
-	def open_doc_gbq(self, _):
-		webbrowser.open("https://docs.dimensions.ai/bigquery/")
+	# @rumps.clicked("Docs: BigQuery")
+	# def open_doc_gbq(self, _):
+	# 	webbrowser.open("https://docs.dimensions.ai/bigquery/")
 
-	@rumps.clicked("Releases..")
-	def open_releases(self, _):
-		webbrowser.open("https://github.com/lambdamusic/Quick-Dimensions-Menubar/releases")
+	# @rumps.clicked("Releases..")
+	# def open_releases(self, _):
+	# 	webbrowser.open("https://github.com/lambdamusic/Quick-Dimensions-Menubar/releases")
 
 
 	#	
@@ -178,28 +173,28 @@ class DimensionsApp(rumps.App):
 	#
 
 	def _build_pubs_submenu(self):
-		return identifier_menu_builder("Publication", PUBS_MENU)
+		return identifier_menu_builder("Publications..", PUBS_MENU)
 
 	def _build_grants_submenu(self):
-		return identifier_menu_builder("Grant", GRANTS_MENU)
+		return identifier_menu_builder("Grants..", GRANTS_MENU)
 
 	def _build_patent_submenu(self):
-		return identifier_menu_builder("Patent", PATENTS_MENU)
+		return identifier_menu_builder("Patents..", PATENTS_MENU)
 
 	def _build_poldoc_submenu(self):
-		return identifier_menu_builder("Policy Document", POLICY_DOCUMENTS_MENU)
+		return identifier_menu_builder("Policy Documents..", POLICY_DOCUMENTS_MENU)
 
 	def _build_cltrial_submenu(self):
-		return identifier_menu_builder("Clinical Trial", CLINICAL_TRIALS_MENU)
+		return identifier_menu_builder("Clinical Trials..", CLINICAL_TRIALS_MENU)
 
 	def _build_dataset_submenu(self):
-		return identifier_menu_builder("Dataset", DATASETS_MENU)
+		return identifier_menu_builder("Datasets..", DATASETS_MENU)
 
 	def _build_res_submenu(self):
-		return identifier_menu_builder("Researcher", RESEARCHERS_MENU)
+		return identifier_menu_builder("Researchers..", RESEARCHERS_MENU)
 
 	def _build_orgs_submenu(self):
-		return identifier_menu_builder("Organization", GRID_MENU)
+		return identifier_menu_builder("Organizations..", GRID_MENU)
 
 	#
 	# categories

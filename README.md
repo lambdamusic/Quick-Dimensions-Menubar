@@ -14,15 +14,15 @@ Quick links to research categories:
 
 # Installation
 
-Best is to get the [latest prebuilt binary](https://github.com/lambdamusic/quick-dimensions-menubar/releases). 
+You can download the [latest prebuilt binary](https://github.com/lambdamusic/quick-dimensions-menubar/releases). 
 
-Download the file `QuickDimensions.app.zip` , unzip and right-click open to run it. 
+Get the file `QuickDimensions.app.zip` , unzip and right-click open to run it. 
 
 It was built with OSx 11.1, but it *should* work on not-too-older versions too.  
 
 ## Opening the app
 
-The first time you'll probably have to **right-click** on it and select 'Open', instead of just double-clicking on it. This is because the app doesn't come from the App Store and hence the OS flags it as [potentially malicious](https://www.cultofmac.com/672576/cant-launch-your-apps-on-macos-catalina-heres-the-fix/). 
+The first time you'll have to **right-click** on it and select 'Open', instead of just double-clicking on it. This is because the app doesn't come from the App Store and hence the OS [does not recognize it](https://www.cultofmac.com/672576/cant-launch-your-apps-on-macos-catalina-heres-the-fix/). 
 
 
 # Development 
@@ -32,6 +32,14 @@ QuickDimensions is a python3 app built with [rumps](https://rumps.readthedocs.io
 ```
 python QuickDimensions.py
 ```
+
+## Running the app
+
+```
+pip install -r requirements.txt
+python QuickDimensions.py
+```
+
 
 ## Building the app
 
